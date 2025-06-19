@@ -291,9 +291,9 @@ def run_auth():
     )
 
     # Título y logos centrados
-    logo_unrc_bytes = open("logo_unrc.png", "rb").read()
+    logo_unrc_bytes = open("Streamlit/logo_unrc.png", "rb").read()
     logo_unrc_base64 = base64.b64encode(logo_unrc_bytes).decode("utf-8")
-    ipsep_logo_bytes = open("ipsep_logo.jpeg", "rb").read()
+    ipsep_logo_bytes = open("Streamlit/ipsep_logo.jpeg", "rb").read()
     ipsep_logo_base64 = base64.b64encode(ipsep_logo_bytes).decode("utf-8")
     st.markdown('''
     <div style="text-align: center; margin-bottom: 32px;">
