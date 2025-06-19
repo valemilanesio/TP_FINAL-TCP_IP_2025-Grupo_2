@@ -18,7 +18,6 @@ from influxdb_client.client.write_api import SYNCHRONOUS
 import streamlit_authenticator as stauth
 import yaml
 from yaml.loader import SafeLoader
-from pathlib import Path
 
 # 1. PRIMERO: Configuración de la página (debe ser lo primero)
 st.set_page_config(
@@ -281,8 +280,7 @@ st.markdown("""
 
 # Lógica de inicio de sesión con streamlit-authenticator
 def run_auth():
-    config_path = Path(__file__).parent / "config.yaml"
-    with open(config_path) as file:
+    with open("Streamlit/config.yaml") as file:
         config = yaml.load(file, Loader=SafeLoader)
     authenticator = stauth.Authenticate(
         config['credentials'],
@@ -322,7 +320,7 @@ def run_auth():
         email, username, name = authenticator.register_user(two_factor_auth=True)
         if email:
             st.success("Registro exitoso. Ahora puedes iniciar sesión.")
-            with open(config_path, 'w') as file:
+            with open("Streamlit/config.yaml", 'w') as file:
                 yaml.dump(config, file, default_flow_style=False)
     except Exception as e:
         st.error(e)
